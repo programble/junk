@@ -69,6 +69,16 @@ class RubarbBot
       @socket.puts "PART #{$1}"
     when /^eval (.+)/
       eval($1).inspect
+    when /^spam (\d+) ([\d.]+) (.+)/
+      (1..($1.to_i)).each do |i|
+        sleep $2.to_f
+        privmsg(channel, $3)
+      end
+    when /^spam (\S+) (\d+) ([\d.]+) (.+)/
+      (1..($2.to_i)).each do |i|
+        sleep $3.to_i
+        privmsg($1, $4)
+      end
     when /(\S+)(.*)/
       privmsg(channel, "\x01ACTION #{$1}s#{$2}\x01")
     end
