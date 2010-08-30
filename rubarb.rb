@@ -69,6 +69,8 @@ class RubarbBot
       @socket.puts "PART #{$1}"
     when /^eval (.+)/
       eval($1).inspect
+    when /(\S+)(.*)/
+      privmsg(channel, "\x01ACTION #{$1}s#{$2}\x01")
     end
   end
 
