@@ -14,9 +14,7 @@ class LoggingTCPSocket < TCPSocket
   end
 
   def gets
-    s = super
-    @file.puts ">>>#{s}"
-    s
+    super.tap{|s| @file.puts ">>>#{s}" }
   end
 end
 
