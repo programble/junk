@@ -8,9 +8,9 @@ class LoggingTCPSocket < TCPSocket
     @file = file
   end
   
-  def puts s
+  def puts(s)
     @file.puts "<<<#{s}"
-    super(s)
+    super s
   end
 
   def gets
