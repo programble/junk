@@ -89,8 +89,8 @@ class RubarbBot
     when /^#{@nick}[:,]\s+(.+)/
       command = $1
       begin
-        response = handle_admin(command, nick, channel) if @admins.any? {|admin| "#{nick}!#{user}@#{hostname}" =~ admin}
-        response = handle(command, nick, channel) unless response
+        response = handle(command, nick, channel)
+        response = handle_admin(command, nick, channel) if not response and @admins.any? {|admin| "#{nick}!#{user}@#{hostname}" =~ admin}
       rescue
         response = "Error: #{$!} at #{$@.first}"
       end
