@@ -43,9 +43,11 @@ class ContextBot
       when /:[^ ]+ 001/
         autojoin
       when /^:([^!]+)[^ ]+ PRIVMSG ([^ ]+) :context\?$/
-        @context[$2].each do |context|
-          notice($1, context)
-          sleep 0.5
+        if @context[$2]
+          @context[$2].each do |context|
+            notice($1, context)
+            sleep 0.5
+          end
         end
       when /^:([^!]+)[^ ]+ PRIVMSG ([^ ]+) :\x01ACTION ([^\x01]+)\x01$/
         if @context[$2]
