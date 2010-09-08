@@ -42,6 +42,8 @@ class ContextBot
       case line.strip
       when /:[^ ]+ 001/
         autojoin
+      when /PING :(.*)/
+        @socket.puts "PONG :#{$1}"
       when /^:([^!]+)[^ ]+ PRIVMSG ([^ ]+) :context\?$/
         if @context[$2]
           @context[$2].each do |context|
