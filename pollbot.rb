@@ -200,7 +200,7 @@ class PollBot
         "vote" => "Vote for a choice in the current poll. Syntax: vote <choice>"}
       help[$1]
     else
-      "Unknown command. Use 'help' for a list of commands."
+      vote(command.strip, nick)
     end
   end
 
