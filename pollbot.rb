@@ -231,5 +231,5 @@ class PollBot
   end
 end
 
-bot = PollBot.new("irc.ninthbit.net", 6667, "pollbot", ["#offtopic"])
+bot = PollBot.new("onyx.ninthbit.net", 6667, "pollbot", ["#offtopic"])
 bot.run    
