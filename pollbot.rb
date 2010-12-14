@@ -154,6 +154,8 @@ class PollBot
       "pong"
     when /^start ([^ ]+) or ([^ ]+)$/
       start_poll("#{$1} or #{$2}", 5, nick, channel, [$1, $2])
+    when /^start ([^?]+[?])$/
+      start_poll($1, 5, nick, channel, ["Yes", "No"])
     when /^start ([\d.]+) ([^:]+): (.+)/
       start_poll($2, $1.to_f, nick, channel, $3.split(";").map{|x| x.strip})
     when /^start ([^:]+): (.+)/
