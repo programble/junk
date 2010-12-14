@@ -157,9 +157,17 @@ class PollBot
     when /^start ([^?]+[?])$/
       start_poll($1, 5, nick, channel, ["Yes", "No"])
     when /^start ([\d.]+) ([^:]+): (.+)/
-      start_poll($2, $1.to_f, nick, channel, $3.split(";").map{|x| x.strip})
+      if $3.include? ";"
+        start_poll($2, $1.to_f, nick, channel, $3.split(";").map{|x| x.strip})
+      else
+        start_poll($2, $1.to_f, nick, channel, $3.split(",").map{|x| x.strip})
+      end
     when /^start ([^:]+): (.+)/
-      start_poll($1, 5, nick, channel, $2.split(";").map{|x| x.strip})
+      if $2.include? ";"
+        start_poll($1, 5, nick, channel, $2.split(";").map{|x| x.strip})
+      else
+        start_poll($1, 5, nick, channel, $2.split(",").map{|x| x.strip})
+      end
     when /^end$/
       end_poll(nick)
     when /^poll\??|topic$/
@@ -170,7 +178,7 @@ class PollBot
       end
     when /^choices$/
       if @poll_topic
-        "The choices for the current poll are: #{@poll_choices.join('; ')}."
+        "The choices for the current poll are: #{@poll_choices.join(', ')}."
       else
         "There is no poll in progress. Use 'start' to start a new poll."
       end
