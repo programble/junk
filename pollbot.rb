@@ -179,9 +179,9 @@ class PollBot
     when /^choices$/
       if @poll_topic
         if @poll_choices.any? {|x| x.include? ","}
-          "The choices for the current poll are: #{@poll_choices.join(', ')}."
-        else
           "The choices for the current poll are: #{@poll_choices.join('; ')}."
+        else
+          "The choices for the current poll are: #{@poll_choices.join(', ')}."
         end
       else
         "There is no poll in progress. Use 'start' to start a new poll."
