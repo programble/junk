@@ -41,11 +41,6 @@ $(function() {
   });
 
   $('#step').click(function() {
-    if (!vm) {
-      reset();
-      output();
-      return;
-    }
     try {
       vm.step();
     } catch(e) {
@@ -55,7 +50,6 @@ $(function() {
   });
 
   $('#run').click(function() {
-    if (!vm) reset();
     try {
       vm.run();
     } catch(e) {
@@ -63,4 +57,7 @@ $(function() {
     }
     output();
   });
+
+  reset();
+  output();
 });
