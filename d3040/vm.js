@@ -8,7 +8,7 @@ var VM = function() {
 VM.prototype.step = function() {
   var ir = this.mem[this.ip++];
   if (!ir)
-    throw 'No instruction at IP=' + (this.ip - 1);
+    throw 'No instruction at IP = M' + this.ip;
 
   switch (ir[0]) {
     case 'INP':
@@ -65,7 +65,7 @@ VM.prototype.step = function() {
       this.ip--;
       return false;
     default:
-      throw 'Invalid opcode at IP=' + (this.ip - 1);
+      throw 'Invalid opcode at IP = M' + this.ip;
     }
   return true; // Continue
 }
