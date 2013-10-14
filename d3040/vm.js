@@ -39,7 +39,7 @@ VM.prototype.step = function() {
       this.regs[0] = this.regs[ir[1]] * this.regs[ir[2]];
       break;
     case 'DIV':
-      this.regs[0] = this.regs[ir[1]] / this.regs[ir[2]];
+      this.regs[0] = Math.floor(this.regs[ir[1]] / this.regs[ir[2]]);
       break;
     case 'INC':
       this.regs[ir[1]]++;
