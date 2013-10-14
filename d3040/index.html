@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+
+    <style>
+      textarea { font-family: monospace; }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -18,6 +22,212 @@
           </a>
         </div>
         <h1>Dawson 3040</h1>
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#emulator" data-toggle="tab">Emulator</a></li>
+        <li><a href="#specification" data-toggle="tab">Specification</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="emulator" class="tab-pane active">
+          Emulator
+        </div>
+
+        <div id="specification" class="tab-pane">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Opcode</th>
+                <th colspan="2">Operands</th>
+                <th>Operation</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code>INP</code></td>
+                <td><code>VAL</code></td>
+                <td><code>MEM</code></td>
+                <td>
+                  Input the given value into the given memory address
+                </td>
+                <td><code>INP 7 M1</code></td>
+              </tr>
+
+              <tr>
+                <td><code>CLA</code></td>
+                <td></td>
+                <td></td>
+                <td>
+                  Clear the accumulator to 0
+                </td>
+                <td><code>CLA</code></td>
+              </tr>
+
+              <tr>
+                <td><code>MAM</code></td>
+                <td><code>MEM</code></td>
+                <td></td>
+                <td>
+                  Move the value from the accumulator to the given memory
+                  location
+                </td>
+                <td><code>MAM M6</code></td>
+              </tr>
+
+              <tr>
+                <td><code>MMR</code></td>
+                <td><code>MEM</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Move the value from the given memory location to the given
+                  register
+                </td>
+                <td><code>MMR M1 R1</code></td>
+              </tr>
+
+              <tr>
+                <td><code>MRA</code></td>
+                <td><code>REG</code></td>
+                <td></td>
+                <td>
+                  Move the value from the given register to the accumulator
+                </td>
+                <td><code>MRA R3</code></td>
+              </tr>
+
+              <tr>
+                <td><code>MAR</code></td>
+                <td><code>REG</code></td>
+                <td></td>
+                <td>
+                  Move the value from the accumulator to the given register
+                </td>
+                <td><code>MAR R1</code></td>
+              </tr>
+
+              <tr>
+                <td><code>ADD</code></td>
+                <td><code>REG</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Add the values in the two given registers, put result in
+                  accumulator
+                </td>
+                <td><code>ADD R1 R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>SUB</code></td>
+                <td><code>REG</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Subtract the value in the second register from the value in
+                  the first register and place the result in the accumulator
+                </td>
+                <td><code>SUB R1 R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>MUL</code></td>
+                <td><code>REG</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Multiply the values in the given registers, put result in
+                  accumulator
+                </td>
+                <td><code>MUL R1 R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>DIV</code></td>
+                <td><code>REG</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Divide the value in the first register by the value in the
+                  second register and place the result in the accumulator
+                </td>
+                <td><code>DIV R1 R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>INC</code></td>
+                <td><code>REG</code></td>
+                <td></td>
+                <td>
+                  Increment the given register by 1
+                </td>
+                <td><code>INC R1</code></td>
+              </tr>
+
+              <tr>
+                <td><code>DEC</code></td>
+                <td><code>REG</code></td>
+                <td></td>
+                <td>
+                  Decrement the given register by 1
+                </td>
+                <td><code>DEC R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>CMP</code></td>
+                <td><code>REG</code></td>
+                <td><code>REG</code></td>
+                <td>
+                  Compare the values in two given registers; if the values are
+                  equal, store 1 in the accumulator, otherwise store 0 in the
+                  accumulator
+                </td>
+                <td><code>CMP R1 R2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>JMP</code></td>
+                <td><code>MEM</code></td>
+                <td></td>
+                <td>
+                  Jump to the instruction at the given memory address
+                </td>
+                <td><code>JMP M26</code></td>
+              </tr>
+
+              <tr>
+                <td><code>JPZ</code></td>
+                <td><code>MEM</code></td>
+                <td></td>
+                <td>
+                  Jump to the instruction at the given memory address only if
+                  the accumulator holds a 0
+                </td>
+                <td><code>JPZ M24</code></td>
+              </tr>
+
+              <tr>
+                <td><code>JPN</code></td>
+                <td><code>MEM</code></td>
+                <td></td>
+                <td>
+                  Jump to the instruction at the given memory address only if
+                  the accumulator does not hold a 0
+                </td>
+                <td><code>JPN M12</code></td>
+              </tr>
+
+              <tr>
+                <td><code>HLT</code></td>
+                <td></td>
+                <td></td>
+                <td>
+                  Halt program execution
+                </td>
+                <td><code>HLT</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
