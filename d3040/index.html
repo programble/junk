@@ -31,7 +31,100 @@
 
       <div class="tab-content">
         <div id="emulator" class="tab-pane active">
-          Emulator
+          <div class="alert alert-danger fade in hidden">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Error:</strong>
+            <span></span>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Input</h3>
+
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="inip" class="col-md-4 control-label">Instruction Pointer</label>
+                  <div class="col-md-8">
+                    <input type="number" id="inip" class="form-control" value="0">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="ina" class="col-md-4 control-label">Accumulator</label>
+                  <div class="col-md-8">
+                    <input type="number" id="ina" class="form-control" value="26">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inr1" class="col-md-4 control-label">R1</label>
+                  <div class="col-md-8">
+                    <input type="number" id="inr1" class="form-control" value="9">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inr2" class="col-md-4 control-label">R2</label>
+                  <div class="col-md-8">
+                    <input type="number" id="inr2" class="form-control" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inr3" class="col-md-4 control-label">R3</label>
+                  <div class="col-md-8">
+                    <input type="number" id="inr3" class="form-control" value="2">
+                  </div>
+                </div>
+              </form>
+
+              <h4>Code</h4>
+              <textarea id="incode" class="form-control" rows="16" spellcheck="false">
+CLA
+MAM M22
+MMR M20 R1
+MMR M21 R2
+MMR M22 R3
+DIV R1  R2
+MAM M20
+INC R3
+MRA R3
+MAM M22
+MMR M20 R1
+MMR M24 R3
+CMP R1  R3
+JPZ M5
+HLT</textarea>
+
+              <h4>Data</h4>
+              <textarea id="indata" class="form-control" rows="6" spellcheck="false">
+M20 16
+M21 2
+M22 5
+M23 6
+M24 1</textarea>
+            </div>
+
+            <div class="col-md-6">
+              <h3>Output</h3>
+
+              <button type="button" id="reset" class="btn btn-danger">Reset</button>
+              <button type="button" id="step" class="btn btn-default">Step</button>
+              <button type="button" id="run" class="btn btn-primary">Run</button>
+
+              <dl class="dl-horizontal">
+                <dt>Instruction Pointer</dt> <dd id="outip"></dd>
+                <dt>Accumulator</dt> <dd id="outa"></dd>
+                <dt>R1</dt> <dd id="outr1"></dd>
+                <dt>R2</dt> <dd id="outr2"></dd>
+                <dt>R3</dt> <dd id="outr3"></dd>
+              </dl>
+
+              <h4>Data</h4>
+              <dl id="outdata" class="dl-horizontal">
+              </dl>
+            </div>
+          </div>
         </div>
 
         <div id="specification" class="tab-pane">
