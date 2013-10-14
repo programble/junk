@@ -4,7 +4,7 @@ $(function() {
   function error(e) {
     var div = $('.alert.hidden').clone().removeClass('hidden');
     div.find('span').html(e);
-    $('.alert').last().after(div);
+    $('.alert').first().before(div);
     reset();
   }
 
