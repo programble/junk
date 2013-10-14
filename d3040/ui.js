@@ -51,6 +51,7 @@ $(function() {
   });
 
   $('#run').click(function() {
+    reset();
     try {
       vm.run();
     } catch(e) {
