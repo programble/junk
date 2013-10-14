@@ -35,17 +35,38 @@
         </div>
 
         <div id="specification" class="tab-pane">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Opcode</th>
-                <th colspan="2">Operands</th>
-                <th>Operation</th>
-                <th>Example</th>
-              </tr>
-            </thead>
+          <div class="row">
+            <div class="col-sm-2">
+              <h4>Control Unit</h4>
+              <ul class="list-unstyled">
+                <li>Instruction Pointer</li>
+                <li>Instruction Register</li>
+              </ul>
+            </div>
 
-            <tbody>
+            <div class="col-sm-2">
+              <h4>Registers</h4>
+              <ul class="list-unstyled">
+                <li>Accumulator</li>
+                <li>R1</li>
+                <li>R2</li>
+                <li>R3</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Opcode</th>
+                  <th colspan="2">Operands</th>
+                  <th>Operation</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+
+              <tbody>
               <tr>
                 <td><code>INP</code></td>
                 <td><code>VAL</code></td>
@@ -225,8 +246,9 @@
                 </td>
                 <td><code>HLT</code></td>
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
