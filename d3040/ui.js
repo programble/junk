@@ -1,25 +1,26 @@
 var vm;
 
 $(function() {
-  function error(e) {
+  function error(e, in_reset) {
     var div = $('.alert.hidden').clone().removeClass('hidden');
     div.find('span').html(e);
     $('.alert').first().before(div);
-    reset();
+    if (!in_reset)
+      reset();
   }
 
   function reset() {
-    vm = new VM();
-    vm.ip = VM.parseOperand($('#inip').val());
-    vm.regs[0] = +$('#ina').val();
-    vm.regs[1] = +$('#inr1').val();
-    vm.regs[2] = +$('#inr2').val();
-    vm.regs[3] = +$('#inr3').val();
     try {
+      vm = new VM();
+      vm.ip = VM.parseOperand($('#inip').val());
+      vm.regs[0] = +$('#ina').val();
+      vm.regs[1] = +$('#inr1').val();
+      vm.regs[2] = +$('#inr2').val();
+      vm.regs[3] = +$('#inr3').val();
       vm.parseCode($('#incode').val());
       vm.parseData($('#indata').val());
     } catch (e) {
-      error(e);
+      error(e, true);
     }
   }
 

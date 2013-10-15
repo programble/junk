@@ -65,7 +65,7 @@ VM.prototype.step = function() {
       this.ip--;
       return false;
     default:
-      throw 'Invalid opcode at IP = M' + this.ip;
+      throw 'Invalid opcode ' + ir[0] + ' at IP = M' + this.ip;
     }
   return true; // Continue
 }
@@ -75,12 +75,17 @@ VM.prototype.run = function() {
 }
 
 VM.parseOperand = function(str) {
+  var parsed;
   if (str[0] == 'R')
-    return +str.slice(1);
+    parsed = parseInt(str.slice(1));
   else if (str[0] == 'M')
-    return +str.slice(1) - 1;
+    parsed = parseInt(str.slice(1) - 1);
   else
-    return +str;
+    parsed = parseInt(str);
+  if (isNaN(parsed))
+    throw 'Invalid operand ' + str;
+  else
+    return parsed;
 }
 
 VM.prototype.parseCode = function(code) {
