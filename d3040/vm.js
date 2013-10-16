@@ -76,9 +76,11 @@ VM.prototype.run = function() {
 
 VM.parseOperand = function(str) {
   var parsed;
-  if (str[0] == 'R')
+  if (str[0] == 'R') {
     parsed = parseInt(str.slice(1));
-  else if (str[0] == 'M')
+    if (parsed < 1 || parsed > 3)
+      throw 'No such register ' + str;
+  } else if (str[0] == 'M')
     parsed = parseInt(str.slice(1) - 1);
   else
     parsed = parseInt(str);
