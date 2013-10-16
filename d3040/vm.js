@@ -80,9 +80,11 @@ VM.parseOperand = function(str) {
     parsed = parseInt(str.slice(1));
     if (parsed < 1 || parsed > 3)
       throw 'No such register ' + str;
-  } else if (str[0] == 'M')
+  } else if (str[0] == 'M') {
     parsed = parseInt(str.slice(1) - 1);
-  else
+    if (parsed < 0)
+      throw 'Invalid memory location ' + str;
+  } else
     parsed = parseInt(str);
   if (isNaN(parsed))
     throw 'Invalid operand ' + str;
